@@ -3,19 +3,31 @@ import "../scss/login.scss";
 
 const Login = () => {
   return (
-    <div className="login">
-      <h1>Logo</h1>
-      <h1>Sign in to Keeper</h1>;
-      <form>
-        <p>E-mail</p>
-        <input type="text" />
-        <span>Password</span>
-        <span>Forgot password? </span>
-        <input type="text" />
-        <button>Sign in</button>
-      </form>
-      <div>
-        <p>New user? Create an account.</p>
+    <div>
+      <div className="logo">
+        <h1>Keeper</h1>
+        <p>Sign in to Keeper</p>;
+      </div>
+      <div className="login">
+        <form>
+          <p>Email address</p>
+          <input type="text" />
+          <div className="password">
+            <span>Password</span>
+            <div></div>
+            <a className="button" href="#">
+              Forgot password?
+            </a>
+          </div>
+          <input type="password" />
+          <button>Sign in</button>
+        </form>
+      </div>
+      <div className="create-account">
+        <p>New user?&nbsp;</p>
+        <a className="button" href="#">
+          Create an account.
+        </a>
       </div>
     </div>
   );
