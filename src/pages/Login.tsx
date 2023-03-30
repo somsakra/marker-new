@@ -1,12 +1,15 @@
 import React from "react";
 import "../scss/login.scss";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 
 const Login = () => {
   return (
     <div>
       <div className="logo">
-        <h1>Keeper</h1>
-        <p>Sign in to Keeper</p>;
+        <h1>
+          <BorderColorIcon style={{ fontSize: "60px" }} />
+        </h1>
+        <p>Sign in to Marker</p>;
       </div>
       <div className="login">
         <form>

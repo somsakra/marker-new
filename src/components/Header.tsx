@@ -1,13 +1,13 @@
 import React from "react";
-import HighlightIcon from "@mui/icons-material/Highlight";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 
 import "../scss/header.scss";
 function Header() {
   return (
     <header>
       <h1>
-        <HighlightIcon />
-        Keeper
+        <BorderColorIcon style={{ fontSize: "35px" }} />
+        &nbsp; Marker
       </h1>
     </header>
   );
