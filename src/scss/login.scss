@@ -1,0 +1,18 @@
+@import 'parameters.scss';
+
+.login {
+    background-color: $primary-color;
+    width: 400px;
+    margin: 30px auto 20px auto;
+    padding: 20px;
+    border-radius: 7px;
+    box-shadow: 0 1px 5px rgb(138, 137, 137);
+}
+
+input {
+    width: 100%;
+    box-shadow: 0 1px 5px rgb(138, 137, 137);
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+}
