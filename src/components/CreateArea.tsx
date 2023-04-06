@@ -57,9 +57,15 @@ function CreateArea(props: any) {
           rows={isExpanded ? 3 : 1}
         />
         <Zoom in={isExpanded}>
-          <Fab onClick={submitNote}>
-            <AddIcon />
-          </Fab>
+          {note.title.length !== 0 && note.content.length !== 0 ? (
+            <Fab onClick={submitNote}>
+              <AddIcon />
+            </Fab>
+          ) : (
+            <Fab>
+              <AddIcon />
+            </Fab>
+          )}
         </Zoom>
       </form>
     </div>

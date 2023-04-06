@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "./app/hook";
 import Main from "./pages/Main";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -6,13 +7,20 @@ import Test from "./pages/Test";
 
 import "./App.scss";
 
-const router = createBrowserRouter([
+const userRouter = createBrowserRouter([
   {
-    path: "/",
+    path: "*",
     element: <Main />,
   },
   {
-    path: "/login",
+    path: "/test",
+    element: <Test />,
+  },
+]);
+
+const router = createBrowserRouter([
+  {
+    path: "*",
     element: <Login />,
   },
   {
@@ -26,9 +34,15 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  const dispatch = useAppDispatch();
+  const user = useAppSelector((state) => state.user);
   return (
     <div>
-      <RouterProvider router={router} />;
+      {localStorage.getItem("token") ? (
+        <RouterProvider router={userRouter} />
+      ) : (
+        <RouterProvider router={router} />
+      )}
     </div>
   );
 };

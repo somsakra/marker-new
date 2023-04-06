@@ -51,6 +51,13 @@
     color: $primary-color-dark;
 }
 
+.login-message {
+    margin-top: 15px;
+    color: $primary-color-dark;
+    text-align: center;
+    font-size: larger;
+}
+
 .password {
     display: flex;
 }
