@@ -33,8 +33,8 @@ const Home = () => {
       {notes.map((noteItem: any, index) => {
         return (
           <Note
-            key={noteItem._id}
-            id={noteItem._id}
+            key={noteItem.id}
+            id={noteItem.id}
             title={noteItem.title}
             content={noteItem.content}
             onDelete={onDeleteNote}

@@ -7,7 +7,7 @@ import {
 import axios from "axios";
 
 interface INote {
-  _id: string;
+  id: string;
   title: string;
   content: string;
   isDone: boolean;
@@ -88,6 +88,8 @@ const noteSlice = createSlice({
       .addCase(getAllNote.rejected, (state, action) => {
         if (state.isLoading === true) {
           state.isLoading = false;
+          localStorage.removeItem("token");
+          localStorage.removeItem("email");
         }
       })
       .addCase(addNote.pending, (state, action) => {
@@ -116,7 +118,7 @@ const noteSlice = createSlice({
         if (state.isLoading === true) {
           state.isLoading = false;
           const newNotes = state.value.notes.filter(
-            (note) => note._id !== action.payload.id
+            (note) => note.id !== action.payload.id
           );
           state.value.notes = newNotes;
         }

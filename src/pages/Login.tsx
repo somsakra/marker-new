@@ -52,7 +52,7 @@ const Login = () => {
         <div className="password">
           <span>Password</span>
           <div></div>
-          <a className="button" href="#">
+          <a className="button" href="#" tabIndex={-1}>
             Forgot password?
           </a>
         </div>
