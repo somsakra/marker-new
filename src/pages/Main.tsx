@@ -6,6 +6,7 @@ import CreateArea from "../components/CreateArea";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Note from "../components/Note";
+import Loading from "./Loading";
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -25,6 +26,8 @@ const Home = () => {
   useEffect(() => {
     if (token) dispatch(getAllNote(token));
   }, []);
+
+  if (noteDatas.isLoading) return <Loading />;
 
   return (
     <div>
