@@ -23,12 +23,18 @@ const initialState: State = {
   isLoading: false,
 };
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export const userLogin = createAsyncThunk(
   "userLogin",
   async (credential: { email: string; password: string }) => {
-    const response = await axios.post("http://localhost:3001/user/login", {
-      email: credential.email,
-      password: credential.password,
+    const response = await axios({
+      method: "post",
+      data: {
+        email: credential.email,
+        password: credential.password,
+      },
+      url: `${API_URL}/user/login`,
     });
     return response.data;
   }
@@ -36,9 +42,13 @@ export const userLogin = createAsyncThunk(
 export const userSignup = createAsyncThunk(
   "userSignup",
   async (credential: { email: string; password: string }) => {
-    const response = await axios.post("http://localhost:3001/user/signup", {
-      email: credential.email,
-      password: credential.password,
+    const response = await axios({
+      method: "post",
+      data: {
+        email: credential.email,
+        password: credential.password,
+      },
+      url: `${API_URL}/user/signup`,
     });
     return response.data;
   }
@@ -50,7 +60,7 @@ export const getUserInfo = createAsyncThunk(
     const response = await axios({
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
-      url: "http://localhost:3001/user/info",
+      url: `${API_URL}/user/info`,
     });
     return response.data;
   }

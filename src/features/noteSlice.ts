@@ -32,13 +32,15 @@ const initialState: State = {
   isLoading: false,
 };
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 export const getAllNote = createAsyncThunk(
   "getAllNote",
   async (token: string) => {
     const response = await axios({
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
-      url: "http://localhost:3001/note",
+      url: `${API_URL}/note`,
     });
     return response.data;
   }
@@ -52,7 +54,7 @@ export const addNote = createAsyncThunk(
       method: "post",
       headers: { Authorization: `Bearer ${token}` },
       data: { title: newNoteData.title, content: newNoteData.content },
-      url: `http://localhost:3001/note/`,
+      url: `${API_URL}/note/`,
     });
     return response.data;
   }
@@ -63,7 +65,7 @@ export const deleteNote = createAsyncThunk("deleteNote", async (id: string) => {
   const response = await axios({
     method: "DELETE",
     headers: { Authorization: `Bearer ${token}` },
-    url: `http://localhost:3001/note/${id}`,
+    url: `${API_URL}/note/${id}`,
   });
   return { message: response.data.message, id: id };
 });

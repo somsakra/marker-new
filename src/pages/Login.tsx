@@ -34,12 +34,11 @@ const Login = () => {
 
   return (
     <div>
-      <Header />
       <div className="logo">
         <h1>
           <BorderColorIcon style={{ fontSize: "60px" }} />
         </h1>
-        <p>Sign in to Marker</p>;
+        <p>Sign in to Marker</p>
       </div>
       <div className="login">
         <p>Email address</p>

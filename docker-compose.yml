@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    volumes:
+      - type: bind
+        source: ./conf.d
+        target: /etc/nginx/conf.d
+      - type: bind
+        source: ./ssl
+        target: /etc/ssl/localhost-ssl
+      - type: bind
+        source: ./dist
+        target: /usr/share/nginx/html
+    ports:
+      - 80:80
+      - 443:443
