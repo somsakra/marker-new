@@ -4,6 +4,7 @@ import { userLogin } from "../features/userSlice";
 import "../scss/login.scss";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import Header from "../components/Header";
+import Loading from "./Loading";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -31,6 +32,8 @@ const Login = () => {
     localStorage.setItem("email", result.payload.email);
     window.location.href = "/";
   };
+
+  if (user.isLoading) return <Loading />;
 
   return (
     <div>

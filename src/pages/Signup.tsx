@@ -4,6 +4,7 @@ import { userSignup } from "../features/userSlice";
 import "../scss/signup.scss";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import Header from "../components/Header";
+import Loading from "./Loading";
 
 const Signup = () => {
   const dispatch = useAppDispatch();
@@ -29,6 +30,8 @@ const Signup = () => {
     const result = await dispatch(userSignup(credential));
     setCredential({ email: "", password: "" });
   };
+
+  if (user.isLoading) return <Loading />;
 
   return (
     <div>
