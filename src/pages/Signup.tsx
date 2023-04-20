@@ -32,12 +32,11 @@ const Signup = () => {
 
   return (
     <div>
-      <Header />
       <div className="logo">
         <h1>
           <BorderColorIcon style={{ fontSize: "60px" }} />
         </h1>
-        <p>Let's Mark</p>;
+        <p>Let's Mark</p>
       </div>
       <div className="signup">
         <p>Email address</p>
