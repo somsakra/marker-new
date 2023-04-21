@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from "../app/hook";
 import { userLogin } from "../features/userSlice";
 import "../scss/login.scss";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
-import Header from "../components/Header";
 import Loading from "./Loading";
 
 const Login = () => {
@@ -44,33 +43,35 @@ const Login = () => {
         <p>Sign in to Marker</p>
       </div>
       <div className="login">
-        <p>Email address</p>
-        <input
-          type="text"
-          name="email"
-          value={credential.email}
-          onChange={handleInputChange}
-        />
-        <div className="password">
-          <span>Password</span>
-          <div></div>
-          <a className="button" href="#" tabIndex={-1}>
-            Forgot password?
-          </a>
-        </div>
-        <input
-          type="password"
-          name="password"
-          value={credential.password}
-          onChange={handleInputChange}
-        />
-        {credential.email.length !== 0 && credential.password.length !== 0 ? (
-          <button onClick={handleSubmit}>Sign in</button>
-        ) : (
-          <button disabled>Sign in</button>
-        )}
+        <form onSubmit={handleSubmit}>
+          <p>Email address</p>
+          <input
+            type="text"
+            name="email"
+            value={credential.email}
+            onChange={handleInputChange}
+          />
+          <div className="password">
+            <span>Password</span>
+            <div></div>
+            <a className="button" href="#" tabIndex={-1}>
+              Forgot password?
+            </a>
+          </div>
+          <input
+            type="password"
+            name="password"
+            value={credential.password}
+            onChange={handleInputChange}
+          />
+          {credential.email.length !== 0 && credential.password.length !== 0 ? (
+            <button type="submit">Sign in</button>
+          ) : (
+            <button disabled>Sign in</button>
+          )}
 
-        <p className="login-message">{user.value.message}</p>
+          <p className="login-message">{user.value.message}</p>
+        </form>
       </div>
       <div className="create-account">
         <p>New user?&nbsp;</p>
