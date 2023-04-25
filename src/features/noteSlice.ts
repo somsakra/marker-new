@@ -34,17 +34,15 @@ const initialState: State = {
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-export const getAllNote = createAsyncThunk(
-  "getAllNote",
-  async (token: string) => {
-    const response = await axios({
-      method: "GET",
-      headers: { Authorization: `Bearer ${token}` },
-      url: `${API_URL}/note`,
-    });
-    return response.data;
-  }
-);
+export const getAllNote = createAsyncThunk("getAllNote", async () => {
+  const token = localStorage.getItem("token");
+  const response = await axios({
+    method: "GET",
+    headers: { Authorization: `Bearer ${token}` },
+    url: `${API_URL}/note`,
+  });
+  return response.data;
+});
 
 export const addNote = createAsyncThunk(
   "addNote",

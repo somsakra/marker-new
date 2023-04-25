@@ -21,10 +21,10 @@ const Home = () => {
     dispatch(deleteNote(id));
   }
 
-  const token = localStorage.getItem("token");
+
 
   useEffect(() => {
-    if (token) dispatch(getAllNote(token));
+   dispatch(getAllNote());
   }, []);
 
   if (noteDatas.isLoading) return <Loading />;
