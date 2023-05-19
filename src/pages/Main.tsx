@@ -21,10 +21,8 @@ const Home = () => {
     dispatch(deleteNote(id));
   }
 
-
-
   useEffect(() => {
-   dispatch(getAllNote());
+    dispatch(getAllNote());
   }, []);
 
   if (noteDatas.isLoading) return <Loading />;

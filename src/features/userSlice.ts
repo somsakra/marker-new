@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "../utils/axios";
 
 interface IUser {
   message: string;
@@ -54,17 +54,13 @@ export const userSignup = createAsyncThunk(
   }
 );
 
-export const getUserInfo = createAsyncThunk(
-  "getUserInfo",
-  async (token: string) => {
-    const response = await axios({
-      method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
-      url: `${API_URL}/user/info`,
-    });
-    return response.data;
-  }
-);
+export const getUserInfo = createAsyncThunk("getUserInfo", async () => {
+  const response = await axios({
+    method: "POST",
+    url: `${API_URL}/user/info`,
+  });
+  return response.data;
+});
 
 const userSlice = createSlice({
   name: "user",

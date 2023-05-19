@@ -4,7 +4,7 @@ import {
   createSlice,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "../utils/axios";
 
 interface INote {
   id: string;
@@ -38,7 +38,6 @@ export const getAllNote = createAsyncThunk("getAllNote", async () => {
   const token = localStorage.getItem("token");
   const response = await axios({
     method: "GET",
-    headers: { Authorization: `Bearer ${token}` },
     url: `${API_URL}/note`,
   });
   return response.data;
@@ -50,7 +49,6 @@ export const addNote = createAsyncThunk(
     const token = localStorage.getItem("token");
     const response = await axios({
       method: "post",
-      headers: { Authorization: `Bearer ${token}` },
       data: { title: newNoteData.title, content: newNoteData.content },
       url: `${API_URL}/note/`,
     });
@@ -62,7 +60,6 @@ export const deleteNote = createAsyncThunk("deleteNote", async (id: string) => {
   const token = localStorage.getItem("token");
   const response = await axios({
     method: "DELETE",
-    headers: { Authorization: `Bearer ${token}` },
     url: `${API_URL}/note/${id}`,
   });
   return { message: response.data.message, id: id };
